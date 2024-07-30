@@ -5,6 +5,11 @@ const dbpath = './db/user.json'
 
 // endpoint
 app.get("/",(req, res) => {
+
+    res.send("welcome to the website!")
+})
+
+app.get("/addSabir", (req, res) => {
     let rawdata = fs.readFileSync(dbpath)
     let user_json = JSON.parse(rawdata)
     for (var user in user_json){
@@ -15,8 +20,7 @@ app.get("/",(req, res) => {
     }
     let data = JSON.stringify(user_json)
     fs.writeFileSync(dbpath, data)
-
-    res.send("welcome to the website!")
+    res.send("We add Sabir's age by 1.")
 })
 
 app.listen(8080, () => {
