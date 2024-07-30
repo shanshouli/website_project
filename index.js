@@ -1,9 +1,9 @@
 const express = require("express") 
 const app = express()
 const fs = require("fs")
-const path = require("path")
 const dbpath = './db/user.json'
 
+// endpoint
 app.get("/",(req, res) => {
     let rawdata = fs.readFileSync(dbpath)
     let user_json = JSON.parse(rawdata)
