@@ -23,6 +23,16 @@ app.get("/addSabir", (req, res) => {
     res.send("We add Sabir's age by 1.")
 })
 
+app.get("/getAllUsers", (req, res) => {
+    let rawdata = fs.readFileSync(dbpath)
+    let user_json = JSON.parse(rawdata)
+    let user_name = []
+    for (var user in user_json){
+        user_name.push(user_json[user].name)
+    }
+    res.send(user_name)
+})
+
 app.listen(8080, () => {
     console.log("website project server is now running")
 })
